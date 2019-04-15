@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Icon.scss';
 
-export default class Icon extends React.Component {
+export default class Icon extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     const {
       icon, className, style, fill, ...other

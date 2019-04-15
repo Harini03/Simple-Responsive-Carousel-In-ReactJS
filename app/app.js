@@ -19,8 +19,6 @@ import promise from 'redux-promise';
 import App from 'containers/App';
 import rootReducer from './reducers';
 
-// import 'sanitize.css/sanitize.css';
-
 // Import root app
 
 
@@ -32,6 +30,7 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 // Import CSS reset and Global Styles
 import 'styles/theme.scss';
 
+/* eslint-disable no-underscore-dangle */
 const composeEnhancers = process.env.NODE_ENV !== 'production' && typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
     // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading

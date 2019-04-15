@@ -27,8 +27,8 @@ describe('homeReducer', () => {
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       }];
-    const expectedResult = Object.assign({},state,{
-      homePageResponse:fixture
+    const expectedResult = Object.assign({}, state, {
+      homePageResponse: fixture
     });
 
     expect(homeReducer(state, fetchImagesSuccess(fixture))).toEqual(expectedResult);

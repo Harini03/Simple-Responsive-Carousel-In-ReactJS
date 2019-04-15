@@ -105,21 +105,23 @@ class HomePage extends Component { // eslint-disable-line react/prefer-stateless
 
                   if (index >= startIndex && index < slideIndex * slideCount) {
                     return (
-                      <CarouselSlide key={item.id} homePage={item} slideWidth={width} showSlide={true} />
+                      <CarouselSlide key={item.id} homePage={item} slideWidth={width} showSlide />
                     );
                   }
                   return (
                     <CarouselSlide key={item.id} homePage={item} slideWidth={width} showSlide={false} />
                   );
                 })}
-                <a href="javascript:void(0)" className="prev" id="prev" onClick={(e) => { this.goToSlide(e, slideIndex - 1); }}>
+                {/* eslint-disable no-script-url */}
+                <a href="javascript:void(0);" className="prev" id="prev" onClick={(e) => { this.goToSlide(e, slideIndex - 1); }}>
                   <Icon
                     icon={ICONS.RIGHT_ARROW}
                     className="left_arrow"
                     fill="#ffffff"
                   />
                 </a>
-                <a href="javascript:void(0)" className="next" id="next" onClick={(e) => { this.goToSlide(e, slideIndex + 1); }}>
+                {/* eslint-disable no-script-url */}
+                <a href="javascript:void(0);" className="next" id="next" onClick={(e) => { this.goToSlide(e, slideIndex + 1); }}>
                   <Icon
                     icon={ICONS.RIGHT_ARROW}
                     fill="#ffffff"

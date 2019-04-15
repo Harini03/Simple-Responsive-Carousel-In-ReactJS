@@ -55,7 +55,7 @@ export default function (state = initialState, action) {
       });
     }
     case 'UPDATE_SLIDE_COUNT': {
-      let n= state.slideIndex;
+      let n = state.slideIndex;
       if (state.slideIndex >= Math.ceil(state.homePageResponse.length / action.payload)) { n = 1; }
       if (state.slideIndex < 1) { n = Math.ceil(state.homePageResponse.length / action.payload); }
       return Object.assign({}, state, {
