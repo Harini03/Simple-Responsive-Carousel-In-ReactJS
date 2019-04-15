@@ -1,0 +1,144 @@
+$black-color: #000000;
+
+* {box-sizing: border-box}
+
+body {
+  font-family: Verdana, sans-serif;
+  margin:0;
+  color: $black-color;
+}
+
+.clear{
+  clear: both;
+}
+
+/***** Home Page Stylings *****/
+.home-page {
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  section {
+    margin: 3em auto;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &.centered {
+      text-align: center;
+    }
+  }
+
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 10000px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    margin: 2rem;
+  }
+
+
+  img {
+    vertical-align: middle;
+  }
+
+  /* Next & previous Arrow Icons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  .prev{
+    left: 1%;
+    border-radius: 0 100% 100% 0;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 1%;
+    border-radius: 100% 0 0 100%;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .left_arrow{
+    transform: rotate(180deg);
+    transform-origin: 50% 50%;
+  }
+
+  button{
+    display: none;
+    background-color: $black-color;
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    margin: 2rem 0.25rem;
+    border: 1px solid $black-color;
+    cursor: pointer;
+
+    &:hover{
+      background-color:#ffffff;
+      color: $black-color;
+      transition-duration: 300ms;
+      transition-timing-function: ease-out;
+    }
+
+    &:focus{
+      outline: 1px dashed $black-color;
+    }
+  }
+  button.prev-button{
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+  button.next-button{
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+  
+
+  @media only screen and (min-width: 768px){
+    button{
+      display: inline-block;
+    }
+    a.prev, a.next{
+      display: none;
+    }
+  }
+}
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
