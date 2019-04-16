@@ -1,6 +1,6 @@
 
 import homeReducer from '../reducer';
-import { fetchImagesSuccess } from '../actions';
+import { fetchImagesSuccess, fetchImagesError, fetchImagesBegin } from '../actions';
 
 describe('homeReducer', () => {
   let state;
@@ -9,7 +9,7 @@ describe('homeReducer', () => {
       isFetching: false,
       isError: false,
       visible: false,
-      homePageResponse: [],
+      images: [],
       slideIndex: 1,
       slideCount: 1
     };
@@ -28,9 +28,28 @@ describe('homeReducer', () => {
         tags: 'fantasy, beautiful, dawn'
       }];
     const expectedResult = Object.assign({}, state, {
-      homePageResponse: fixture
+      images: fixture
     });
 
     expect(homeReducer(state, fetchImagesSuccess(fixture))).toEqual(expectedResult);
+  });
+
+  it('should update the state on fetchImagesBegin action correctly', () => {
+    const expectedResult = Object.assign({}, state, {
+      isFetching: true
+    });
+
+    expect(homeReducer(state, fetchImagesBegin())).toEqual(expectedResult);
+  });
+
+  it('should update the state on fetchImagesError action correctly', () => {
+    const fixture = {};
+    const expectedResult = Object.assign({}, state, {
+      isFetching: false,
+      images: fixture,
+      isError: true
+    });
+
+    expect(homeReducer(state, fetchImagesError(fixture))).toEqual(expectedResult);
   });
 });

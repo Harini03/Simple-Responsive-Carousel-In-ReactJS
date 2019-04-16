@@ -22,7 +22,7 @@ export default class Icon extends React.Component { // eslint-disable-line react
       height: icon.height,
       xmlns: 'http://www.w3.org/2000/svg',
       focusable: 'false',
-      other
+      ...other
     };
 
     return (<svg {...svgProps}>{icon.paths}</svg>);

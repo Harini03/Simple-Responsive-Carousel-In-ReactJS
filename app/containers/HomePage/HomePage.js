@@ -17,12 +17,13 @@ import Icon from 'components/Icons/Icon';
 import { ICONS } from 'components/Icons/Icon-assets';
 import * as actions from './actions';
 
-class HomePage extends Component { // eslint-disable-line react/prefer-stateless-function
+export class HomePage extends Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
 
     this.goToSlide = this.goToSlide.bind(this);
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.onKeyDownArrow = this.onKeyDownArrow.bind(this);
     this.updateDimensions();
   }
 
@@ -37,23 +38,21 @@ class HomePage extends Component { // eslint-disable-line react/prefer-stateless
     fetchImages();
   }
 
-  goToSlide(e, slideIndex) {
-    e.preventDefault();
-    let n = slideIndex;
-    const {
-      slideCount,
-      homePageState: {
-        homePageResponse
-      },
-      actions: {
-        updateSlideIndex
-      }
-    } = this.props;
-    if (slideIndex >= Math.ceil(homePageResponse.length / slideCount)) { n = 1; }
-    if (slideIndex < 1) { n = Math.ceil(homePageResponse.length / slideCount); }
+  onKeyDownArrow(e, slideIndex) {
+    const keyCode = e.keyCode || e.which;
+    if (keyCode === 13 || keyCode === 32) {
+      this.goToSlide(e, slideIndex);
+    }
+  }
 
-
-    updateSlideIndex(n);
+  onKeyUpArrow = (e) => {
+    // e.preventDefault();
+    const keyCode = e.keyCode || e.which;
+    document.getElementById('prev').classList.remove('focused');
+    document.getElementById('next').classList.remove('focused');
+    if (keyCode === 9 || keyCode === 16 || keyCode === 13 || keyCode === 32) {
+      document.getElementById(e.target.id).classList.add('focused');
+    }
   }
 
   updateDimensions() {
@@ -71,12 +70,31 @@ class HomePage extends Component { // eslint-disable-line react/prefer-stateless
     }
   }
 
+  goToSlide(e, slideIndex) {
+    let n = slideIndex;
+    const {
+      slideCount,
+      homePageState: {
+        images
+      },
+      actions: {
+        updateSlideIndex
+      }
+    } = this.props;
+    if (slideIndex > Math.ceil(images.length / slideCount)) { n = 1; }
+    if (slideIndex < 1) { n = Math.ceil(images.length / slideCount); }
+
+
+    updateSlideIndex(n);
+    e.preventDefault();
+  }
+
   render() {
     const {
       homePageState: {
         isFetching,
         isError,
-        homePageResponse
+        images
       },
       slideIndex,
       slideCount
@@ -90,15 +108,15 @@ class HomePage extends Component { // eslint-disable-line react/prefer-stateless
           {!isFetching && isError
             && <p>Something went wrong. Please try again later. </p>
           }
-          {!isFetching && homePageResponse && homePageResponse.length > 0
+          {!isFetching && images && images.length > 0
           && (
             <section className="centered">
               <div className="slideshow-container">
-                {homePageResponse.map((item, index) => {
+                {images.map((item, index) => {
                   const width = (100 / slideCount) - 2;
                   let startIndex = 0;
-                  if (slideIndex > Math.floor(homePageResponse.length / slideCount)) {
-                    startIndex = (slideCount * (slideIndex - 1)) - (slideCount - (homePageResponse % slideCount));
+                  if (slideIndex > Math.floor(images.length / slideCount)) {
+                    startIndex = (slideCount * (slideIndex - 1)) - (slideCount - (images % slideCount));
                   } else {
                     startIndex = slideCount * (slideIndex - 1);
                   }
@@ -113,15 +131,15 @@ class HomePage extends Component { // eslint-disable-line react/prefer-stateless
                   );
                 })}
                 {/* eslint-disable no-script-url */}
-                <a href="javascript:void(0);" className="prev" id="prev" onClick={(e) => { this.goToSlide(e, slideIndex - 1); }}>
+                <a href="javascript:void(0);" className="prev" id="prev" aria-label="previous" onKeyDown={(e) => this.onKeyDownArrow(e, slideIndex - 1)} onKeyUp={(e) => this.onKeyUpArrow(e)} onClick={(e) => { this.goToSlide(e, slideIndex - 1); }}>
                   <Icon
-                    icon={ICONS.RIGHT_ARROW}
+                    icon={ICONS.LEFT_ARROW}
                     className="left_arrow"
                     fill="#ffffff"
                   />
                 </a>
                 {/* eslint-disable no-script-url */}
-                <a href="javascript:void(0);" className="next" id="next" onClick={(e) => { this.goToSlide(e, slideIndex + 1); }}>
+                <a href="javascript:void(0);" className="next" id="next" aria-label="next" onKeyDown={(e) => this.onKeyDownArrow(e, slideIndex + 1)} onKeyUp={(e) => this.onKeyUpArrow(e)} onClick={(e) => { this.goToSlide(e, slideIndex + 1); }}>
                   <Icon
                     icon={ICONS.RIGHT_ARROW}
                     fill="#ffffff"
@@ -129,8 +147,10 @@ class HomePage extends Component { // eslint-disable-line react/prefer-stateless
                 </a>
                 <div className="clear"></div>
               </div>
-              <button type="button" className="prev-button" onClick={(e) => { this.goToSlide(e, slideIndex - 1); }}>Prev</button>
-              <button type="button" className="next-button" onClick={(e) => { this.goToSlide(e, slideIndex + 1); }}>Next</button>
+              <div className="button-section">
+                <button type="button" className="prev-button" aria-label="Previous" disabled={(slideIndex === 1) ? 'disabled' : undefined} onClick={(e) => { this.goToSlide(e, slideIndex - 1); }}>Prev</button>
+                <button type="button" className="next-button" disabled={(slideIndex === Math.ceil(images.length / slideCount)) ? 'disabled' : undefined} onClick={(e) => { this.goToSlide(e, slideIndex + 1); }}>Next</button>
+              </div>
             </section>
           )}
         </div>

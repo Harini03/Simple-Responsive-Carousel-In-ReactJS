@@ -46,34 +46,46 @@ body {
   }
 
   /* Next & previous Arrow Icons */
+  .button-section{
+    background-color: #E9EEE6;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
   .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 45%;
+    top: 50%;
     width: auto;
-    padding: 16px;
-    margin-top: -22px;
+    padding: 2rem;
+    margin-top: -3rem;
     color: white;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0;
     user-select: none;
+    outline: none;
+    &:hover{
+      background-color: rgba(0,0,0,0.5);
+    }
   }
   .prev{
     left: 1%;
-    border-radius: 0 100% 100% 0;
+    border-radius: 0 4rem 4rem 0;
+    padding-left: 0.5rem;
   }
 
   /* Position the "next button" to the right */
   .next {
     right: 1%;
-    border-radius: 100% 0 0 100%;
+    border-radius: 4rem 0 0 4rem;
+    padding-right: 0.5rem;
   }
-
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.5);
+  .focused{
+    outline: 1px dashed $black-color;
   }
 
   .left_arrow{
@@ -86,11 +98,12 @@ body {
     background-color: $black-color;
     color: #ffffff;
     padding: 0.5rem 1.5rem;
-    margin: 2rem 0.25rem;
+    margin: 3rem 0.25rem;
+    font-size: 1.25rem;
     border: 1px solid $black-color;
     cursor: pointer;
 
-    &:hover{
+    &:not([disabled]):hover{
       background-color:#ffffff;
       color: $black-color;
       transition-duration: 300ms;
@@ -99,6 +112,11 @@ body {
 
     &:focus{
       outline: 1px dashed $black-color;
+    }
+
+    &:disabled{
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
   button.prev-button{

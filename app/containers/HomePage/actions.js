@@ -21,7 +21,9 @@ import {
   FETCH_IMAGES_API_KEY,
   FETCH_IMAGES_BEGIN,
   FETCH_IMAGES_SUCCESS,
-  FETCH_IMAGES_ERROR
+  FETCH_IMAGES_ERROR,
+  UPDATE_SLIDE_INDEX,
+  UPDATE_SLIDE_COUNT
 } from './constants';
 
 
@@ -63,11 +65,11 @@ export const fetchImages = () => (dispatch) => {
 };
 
 export const updateSlideIndex = (n) => ({
-  type: 'UPDATE_SLIDE_INDEX',
+  type: UPDATE_SLIDE_INDEX,
   payload: n
 });
 
 export const updateSlideCount = (count) => ({
-  type: 'UPDATE_SLIDE_COUNT',
+  type: UPDATE_SLIDE_COUNT,
   payload: count
 });

@@ -13,14 +13,16 @@
 import {
   FETCH_IMAGES_BEGIN,
   FETCH_IMAGES_SUCCESS,
-  FETCH_IMAGES_ERROR
+  FETCH_IMAGES_ERROR,
+  UPDATE_SLIDE_INDEX,
+  UPDATE_SLIDE_COUNT
 } from './constants';
 
 const initialState = {
   isFetching: false,
   isError: false,
   visible: false,
-  homePageResponse: [],
+  images: [],
   slideIndex: 1,
   slideCount: 1
 };
@@ -34,11 +36,11 @@ export default function (state = initialState, action) {
     }
     case FETCH_IMAGES_SUCCESS: {
       let slideIndex = 1;
-      if (state.slideIndex >= Math.ceil(action.payload.length / state.slideCount)) { slideIndex = 1; }
+      if (state.slideIndex > Math.ceil(action.payload.length / state.slideCount)) { slideIndex = 1; }
       if (state.slideIndex < 1) { slideIndex = Math.ceil(action.payload.length / state.slideCount); }
       return Object.assign({}, state, {
         isFetching: false,
-        homePageResponse: action.payload,
+        images: action.payload,
         slideIndex
       });
     }
@@ -46,18 +48,18 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         isFetching: false,
         isError: true,
-        homePageResponse: action.payload
+        images: action.payload
       });
     }
-    case 'UPDATE_SLIDE_INDEX': {
+    case UPDATE_SLIDE_INDEX: {
       return Object.assign({}, state, {
         slideIndex: action.payload
       });
     }
-    case 'UPDATE_SLIDE_COUNT': {
+    case UPDATE_SLIDE_COUNT: {
       let n = state.slideIndex;
-      if (state.slideIndex >= Math.ceil(state.homePageResponse.length / action.payload)) { n = 1; }
-      if (state.slideIndex < 1) { n = Math.ceil(state.homePageResponse.length / action.payload); }
+      if (state.slideIndex > Math.ceil(state.images.length / action.payload)) { n = 1; }
+      if (state.slideIndex < 1) { n = Math.ceil(state.images.length / action.payload); }
       return Object.assign({}, state, {
         slideCount: action.payload,
         slideIndex: n

@@ -3,6 +3,6 @@
     fill: #999999;
 }
 
-.vz-odt--icon > svg > g {
-    fill: #999999;
+svg.vz-odt--icon:focus{
+    outline: 1px dashed #000000;
 }
