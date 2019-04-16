@@ -11,7 +11,7 @@ This Responsive carousel is Built using the following features.
 - _Webpack_ - **Webpack 4**
 - _Test_ - Jest with Enzyme
 - _Lint_ - ESlint
-- _Styles_ - SCSS Styling
+- _Styles_ - SCSS Styling, styled-components
 
 ## Quick start
 
