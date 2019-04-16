@@ -21,6 +21,11 @@ This Responsive carousel is Built using the following features.
 4. Run `npm start` to see the app at `http://localhost:3000`.
 5. Run `npm run start:production` to see the app running using minified / compressed files along with eslint checks and unit tests run.
 
+## Compatible Browsers
+- IE11
+- Chrome
+- Edge
+- Firefox
 
 ## Note
 
