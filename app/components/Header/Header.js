@@ -5,7 +5,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   render() {
     return (
       <HeaderContainer>
-        <h1>Carousel Test</h1>
+        <h1 aria-level="1">Carousel Test</h1>
       </HeaderContainer>
     );
   }
