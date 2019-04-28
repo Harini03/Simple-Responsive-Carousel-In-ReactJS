@@ -21,7 +21,7 @@ class ErrorBoundary extends Component {
     const { children } = this.props;
     if (hasError) {
       // You can render any custom fallback UI
-      return <h1 aria-level="1">Something went wrong.</h1>;
+      return <h1>Something went wrong.</h1>;
     }
     return children;
   }
