@@ -4,14 +4,15 @@ module.exports = {
     '!app/**/*.test.{js,jsx}',
     '!app/*/RbGenerated*/*.{js,jsx}',
     '!app/app.js',
+    '!app/*/*/index.{js,jsx}',
     '!app/*/*/Loadable.{js,jsx}'
   ],
   coverageThreshold: {
     global: {
-      statements: 45,
-      branches: 40,
-      functions: 45,
-      lines: 45
+      statements: 70,
+      branches: 70,
+      functions: 70,
+      lines: 70
     }
   },
   coverageReporters: ['json', 'lcov', 'text-summary'],

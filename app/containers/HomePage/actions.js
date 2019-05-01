@@ -41,9 +41,10 @@ export const fetchImagesError = (err) => ({
   payload: err
 });
 
+export const fetchImagesAPI = () => axios.get(`${FETCH_IMAGES_API_URL}?key=${FETCH_IMAGES_API_KEY}&q=beautiful+landscape&image_type=photo`);
+
 export const fetchImages = () => (dispatch) => {
   dispatch(fetchImagesBegin());
-
   const onSuccess = (response) => {
     if (response.data.hits) {
       dispatch(fetchImagesSuccess(response.data.hits));
@@ -57,9 +58,7 @@ export const fetchImages = () => (dispatch) => {
       dispatch(fetchImagesError(error));
     }
   };
-
-  axios
-    .get(`${FETCH_IMAGES_API_URL}?key=${FETCH_IMAGES_API_KEY}&q=beautiful+landscape&image_type=photo`)
+  fetchImagesAPI()
     .then(onSuccess)
     .catch(onError);
 };

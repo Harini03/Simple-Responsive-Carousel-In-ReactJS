@@ -1,6 +1,8 @@
 
 import homeReducer from '../reducer';
-import { fetchImagesSuccess, fetchImagesError, fetchImagesBegin } from '../actions';
+import {
+  fetchImagesSuccess, fetchImagesError, fetchImagesBegin, updateSlideIndex, updateSlideCount
+} from '../actions';
 
 describe('homeReducer', () => {
   let state;
@@ -51,5 +53,21 @@ describe('homeReducer', () => {
     });
 
     expect(homeReducer(state, fetchImagesError(fixture))).toEqual(expectedResult);
+  });
+
+  it('should update the state on updateSlideCount action correctly', () => {
+    const expectedResult = Object.assign({}, state, {
+      slideCount: 2
+    });
+
+    expect(homeReducer(state, updateSlideCount(2))).toEqual(expectedResult);
+  });
+
+  it('should update the state on updateSlideIndex action correctly', () => {
+    const expectedResult = Object.assign({}, state, {
+      slideIndex: 3
+    });
+
+    expect(homeReducer(state, updateSlideIndex(3))).toEqual(expectedResult);
   });
 });
