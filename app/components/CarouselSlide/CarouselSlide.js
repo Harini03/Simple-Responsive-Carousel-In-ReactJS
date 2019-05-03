@@ -5,7 +5,7 @@ import imageLoader from './image-loader.gif';
 
 const CarouselSlide = ({ homePage, slideWidth, showSlide }) => (
   <Slide className="" width={slideWidth} showSlide={showSlide}>
-    <Image src={homePage.largeImageURL} alt={homePage.tags} />
+    <Image src={homePage.webformatURL} alt={homePage.tags} />
     <Caption>{homePage.tags}</Caption>
   </Slide>
 );
@@ -22,6 +22,9 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   background: transparent url(${imageLoader}) center no-repeat;
+  @media only screen and (max-width: 767px){
+    object-fit: cover;
+  }
 `;
 
 const Slide = styled.div`
@@ -39,6 +42,12 @@ const Slide = styled.div`
   animation-name: fade;
   animation-duration: 1.5s;
 
+  @media only screen and (max-width: 767px){
+    height: 25rem;
+  }
+  @media only screen and (max-width: 479px){
+    height: 12rem;
+  }
   @-webkit-keyframes fade {
     from {opacity: .4} 
     to {opacity: 1}

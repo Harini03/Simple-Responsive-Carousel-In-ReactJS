@@ -54,9 +54,7 @@ export const fetchImages = () => (dispatch) => {
   };
 
   const onError = (error) => {
-    if (!axios.isCancel(error)) {
-      dispatch(fetchImagesError(error));
-    }
+    dispatch(fetchImagesError(error));
   };
   fetchImagesAPI()
     .then(onSuccess)

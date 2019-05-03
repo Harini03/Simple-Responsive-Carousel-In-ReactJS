@@ -15,7 +15,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import promise from 'redux-promise';
 import App from 'containers/App';
 import rootReducer from './reducers';
 
@@ -41,7 +40,7 @@ const composeEnhancers = process.env.NODE_ENV !== 'production' && typeof window 
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk, promise),
+  applyMiddleware(thunk),
   composeEnhancers
 );
 

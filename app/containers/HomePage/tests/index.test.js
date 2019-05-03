@@ -12,7 +12,7 @@ describe('<HomePage />', () => {
   it('should render the CarouselSlide component', () => {
     const fixture = [
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       }];
@@ -38,7 +38,7 @@ describe('<HomePage />', () => {
   it('should render the Loading Animation', () => {
     const fixture = [
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       }];
@@ -61,7 +61,7 @@ describe('<HomePage />', () => {
   it('should Catch the error and render error message', () => {
     const fixture = [
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       }];
@@ -85,7 +85,7 @@ describe('<HomePage />', () => {
   describe('HomePage Desktop Next/ Prev Buttons With 1 Image', () => {
     const fixture = [
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       }];
@@ -113,12 +113,12 @@ describe('<HomePage />', () => {
   describe('HomePage Desktop Next/ Prev Buttons With Multiple Images', () => {
     const fixture = [
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       },
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077929,
         tags: 'fantasy, beautiful, dawn'
       }];
@@ -172,12 +172,12 @@ describe('<HomePage />', () => {
   describe('HomePage Mobile Next/ Prev Arrows With Multiple Images', () => {
     const fixture = [
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077928,
         tags: 'fantasy, beautiful, dawn'
       },
       {
-        largeImageURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
+        webformatURL: 'https://pixabay.com/get/ea35b60821f6093ed1584d05fb1d4f90e671e2d31cac104490f5c371aeeabcbb_1280.jpg',
         id: 3077929,
         tags: 'fantasy, beautiful, dawn'
       }];
